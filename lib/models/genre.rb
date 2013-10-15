@@ -2,26 +2,28 @@ require_relative '../../config/environment'
 
 class Genre
 
+  extend Existable
+
   attr_accessor :name, :songs, :artists
 
-  @@genres = []
+  @@all = []
 
   def initialize
     @songs = []
     @artists = []
-    @@genres << self
+    @@all << self
   end
 
   def self.count
-    @@genres.count
+    @@all.count
   end
 
   def self.all
-    @@genres
+    @@all
   end
 
   def self.reset_genres
-    @@genres.clear
+    @@all.clear
   end
 
   def self.genres

@@ -2,17 +2,19 @@ require_relative '../../config/environment'
 
 class Song
 
+  extend Existable
+
   attr_accessor :name, :artist
   attr_reader :genre, :artist
 
-  @@songs = []
+  @@all = []
 
   def initialize
-    @@songs << self
+    @@all << self
   end
 
   def self.all
-    @@songs
+    @@all
   end
 
   def genre=(genre)
