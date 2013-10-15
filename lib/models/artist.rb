@@ -1,3 +1,5 @@
+require_relative '../../config/environment'
+
 class Artist
 
   attr_accessor :name, :songs, :genres
