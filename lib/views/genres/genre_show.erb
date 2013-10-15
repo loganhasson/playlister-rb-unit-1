@@ -1,0 +1,10 @@
+<html>
+  <body>
+    <h1><%= o.name %></h1>
+    <ul>
+      <% o.songs.sort_by {|s| [s.name, s.artist.name]}.each do |s| %>
+        <li><a href="<%= "../artists/#{s.artist.name.gsub(' ','_')}.html" %>"><%= "#{s.artist.name}" %></a> - <em><a href="<%= "../songs/#{s.name.gsub(' ', '_')}.html" %>"><%= "#{s.name}" %></a></em></li>
+      <% end %>
+    </ul>
+  </body>
+</html>

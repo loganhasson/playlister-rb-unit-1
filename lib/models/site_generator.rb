@@ -2,7 +2,7 @@ require_relative '../../config/environment'
 
 class SiteGenerator
 
-  OBJECTS = ["artists", "genres"]
+  OBJECTS = ["artists", "genres", "songs"]
 
   def self.generate_index_page(object)
     object_index = ERB.new(File.open("#{ProjectRoot}/lib/views/#{object}/#{object}.erb").read)
@@ -12,7 +12,7 @@ class SiteGenerator
   end
 
   def self.generate_all_index_pages
-    OBJECTS.each do |object|
+    OBJECTS[0..1].each do |object|
       generate_index_page(object)
     end
   end

@@ -3,7 +3,7 @@
     <h1> Genres - <%= Genre.all.size %> Total</h1>
     <ol>
       <% Genre.all.sort_by {|g| g.name}.each do |genre, i| %>
-      <li><a href="#"><%= "#{genre.name} - #{genre.songs.count} songs by #{genre.artists.count} artists" %></a></li>
+      <li><a href="<%= "genres/#{genre.name}.html" %>"><%= "#{genre.name} - #{genre.songs.count} songs by #{genre.artists.count} artists" %></a></li>
       <% end %>
     </ol>
   </body>

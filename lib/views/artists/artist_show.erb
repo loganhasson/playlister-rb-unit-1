@@ -2,12 +2,12 @@
   <body>
     <h1><%= o.name %></h1>
     <h2><% o.genres.each do |g| %>
-      <a href="#"><%= "#{g.name}#{', ' unless g == o.genres.last}" %></a>
+      <a href="<%= "../genres/#{g.name}.html" %>"><%= "#{g.name}" %></a><%= "#{', ' unless g == o.genres.last}" %>
     <% end %>
     </h2>
     <ul>
       <% o.songs.sort_by {|s| [s.name, s.genre]}.each do |s| %>
-        <li><a href="#"><%= "#{s.name}" %></a> - <em><a href="#"><%= "#{s.genre.name}" %></a></em></li>
+        <li><a href="<%= "../songs/#{s.name.gsub(' ', '_')}.html" %>"><%= "#{s.name}" %></a> - <em><a href="<%= "../genres/#{s.genre.name}.html" %>"><%= "#{s.genre.name}" %></a></em></li>
       <% end %>
     </ul>
   </body>
