@@ -1,3 +1,5 @@
+require_relative 'spec_helper.rb'
+
 describe "Genre" do
 
   it "can initialize a genre" do
@@ -45,6 +47,11 @@ describe "Genre" do
   end
 
   describe "Class methods" do
+
+    before(:each) do
+      Genre.reset_genres
+    end
+
     it "keeps track of all known genres" do
       Genre.count.should eq(0)
       rap = Genre.new.tap{|g| g.name = 'rap'}
@@ -55,7 +62,7 @@ describe "Genre" do
     end
 
     it "can reset genres" do
-      genres = [1..5].collect do |i|
+      genres = (1..5).collect do |i|
         Genre.new
       end
       Genre.count.should eq(5)
