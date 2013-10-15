@@ -1,5 +1,6 @@
 require 'pry'
 require 'awesome_print'
+require 'erb'
 
 ProjectRoot ||= "#{File.dirname(__FILE__)}/.."
 

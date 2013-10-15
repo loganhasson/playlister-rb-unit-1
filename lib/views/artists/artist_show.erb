@@ -1,0 +1,14 @@
+<html>
+  <body>
+    <h1><%= o.name %></h1>
+    <h2><% o.genres.each do |g| %>
+      <a href="#"><%= "#{g.name}#{', ' unless g == o.genres.last}" %></a>
+    <% end %>
+    </h2>
+    <ul>
+      <% o.songs.sort_by {|s| [s.name, s.genre]}.each do |s| %>
+        <li><a href="#"><%= "#{s.name}" %></a> - <em><a href="#"><%= "#{s.genre.name}" %></a></em></li>
+      <% end %>
+    </ul>
+  </body>
+</html>

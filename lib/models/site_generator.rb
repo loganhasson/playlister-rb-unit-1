@@ -2,20 +2,42 @@ require_relative '../../config/environment'
 
 class SiteGenerator
 
-  # generate and index page that shows all artists
-  def self.generate_index_pages
+  OBJECTS = ["artists", "genres"]
 
+  def self.generate_index_page(object)
+    object_index = ERB.new(File.open("#{ProjectRoot}/lib/views/#{object}/#{object}.erb").read)
+    File.open("_site/#{object}.html", "w+") do |f|
+      f << object_index.result
+    end
   end
-  # an index page that shows all genres
-  # artist pages
+
+  def self.generate_all_index_pages
+    OBJECTS.each do |object|
+      generate_index_page(object)
+    end
+  end
+
+  def self.generate_show_page(object)
+    show_index = ERB.new(File.open("#{ProjectRoot}/lib/views/#{object}/#{object[0...-1]}_show.erb").read)
+
+    eval("#{object.capitalize[0...-1]}").all.each do |o|
+      File.open("_site/#{object}/#{o.name.gsub(' ', '_')}.html", "w+") do |f|
+        f << show_index.result(binding)
+      end
+    end
+  end
+
+  def self.generate_all_show_pages
+    OBJECTS.each do |object|
+      generate_show_page(object)
+    end
+  end
   # genre pages
   # song pages
 
-end
+  def self.run
+    generate_all_index_pages
+    generate_all_show_pages
+  end
 
-artists_index = ERB.new(File.open('lib/templates/artists.erb').read)
-@artists = Artist.all
-
-File.open('_site/artists/index.html', 'w+') do |f|
-  f << artists_index.result
 end
