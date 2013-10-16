@@ -1,6 +1,6 @@
 class PlaylisterCLI
 
-  @@on = true
+  @@on = true # isn't this unnecessary, since self.run sets it anyway
 
   def self.parse_command(command)
     split_command = command.split
@@ -37,7 +37,7 @@ class PlaylisterCLI
     when "all"
       self.send("playlist")
     else
-      self.send(filter)
+      self.send(filter) # so cool!
     end
   end
 
@@ -65,6 +65,7 @@ class PlaylisterCLI
   def self.help
     puts "Here's what you can do:"
     puts "'playlist' to see an overview of everything"
+    # should read "...artists, genres, or songs" (plural)
     puts "'browse <by>' where <by> is artist, genre, or song"
   end
 
