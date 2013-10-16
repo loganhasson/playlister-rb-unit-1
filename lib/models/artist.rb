@@ -16,6 +16,9 @@ class Artist
     @genres = []
   end
 
+  # shouldn't this be named genre_not_have_artist?
+  # or better yet, keep name, remove `!` from line 22,
+  # and add `!` before method call on line 30
   def genre_has_artist?(genre)
     genre && !genre.artists.include?(self)
   end
