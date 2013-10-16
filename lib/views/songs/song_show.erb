@@ -1,0 +1,6 @@
+<html>
+  <body>
+    <h1><%= o.name %></h1>
+    <h2><a href="<%= "../artists/#{o.artist.name.gsub(' ','_')}.html" %>"><%= "#{o.artist.name}" %></a> - <em><a href="<%= "../genres/#{o.genre.name}.html" %>"><%= "#{o.genre.name}" %></a></em></h2>
+  </body>
+</html>
