@@ -2,6 +2,8 @@
   <body>
     <h1> Genres - <%= Genre.all.size %> Total</h1>
     <ol>
+      <!-- don't need `i` variable in `each` block -->
+      <!-- genres should be sorted by song-count -->
       <% Genre.all.sort_by {|g| g.name}.each do |genre, i| %>
       <li><a href="<%= "genres/#{genre.name}.html" %>"><%= "#{genre.name} - #{genre.songs.count} songs by #{genre.artists.count} artists" %></a></li>
       <% end %>

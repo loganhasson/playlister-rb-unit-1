@@ -2,6 +2,7 @@
   <body>
     <h1> Artists - <%= Artist.all.size %> Total</h1>
     <ol>
+      <!-- don't need `i` variable in `each` block -->
       <% Artist.all.sort_by {|a| a.name}.each do |artist, i| %>
       <li><a href="<%= "artists/#{artist.name.gsub(' ', '_')}.html" %>"><%= "#{artist.name} - #{artist.songs.count} songs" %></a></li>
       <% end %>
