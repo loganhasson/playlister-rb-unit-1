@@ -7,7 +7,7 @@ class Song
   extend Existable
 
   attr_accessor :name, :artist
-  attr_reader :genre, :artist
+  attr_reader :genre
 
   @@all = []
 
