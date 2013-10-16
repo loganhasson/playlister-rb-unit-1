@@ -21,10 +21,11 @@ class LibraryParser
   end
 
   def self.call
+    # can we change `|file|` to `|file_name|`?
     Dir.foreach("#{ProjectRoot}/db/data").each do |file|
       next if file.start_with?('.')
       song_info = split_song_info(file.gsub('.mp3',''))
-      make_objects(song_info) if song_info != nil
+      make_objects(song_info) if song_info != nil # can't remember why we need this nil check
     end
   end
 
