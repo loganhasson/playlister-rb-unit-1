@@ -7,9 +7,11 @@ class SiteGenerator
   OBJECTS = ["artists", "genres", "songs"]
 
   def self.generate_index_page(object)
+    # which dir does File.open start looking from? I thought it would be the bin folder,
+    # but line 13 seems to indicate it's the project root.
     object_index = ERB.new(File.open("#{ProjectRoot}/lib/views/#{object}/#{object}.erb").read)
     File.open("_site/#{object}.html", "w+") do |f|
-      f << object_index.result
+      f << object_index.result # why was binding needed on line 29 but not here?
     end
   end
 
